@@ -14,3 +14,61 @@
     transform: scaleX(1.05);
     transition: transform 50ms linear;
 }
+
+.header-text-shadow {
+    text-shadow: 1px 1px 2px #028bfa, 0 0 1em #5effff, 0 0 0.2em #ffffff;
+}
+
+
+.bg-grid-white {
+    background-image: url("../public/white-grid.png");
+}
+
+
+
+
+.nav-button-clip {
+    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+}
+
+.nav-button-clip-alt {
+    clip-path: polygon(0 0, 75% 0, 100% 100%, 25% 100%);
+}
+
+.layer1-bg {
+    background-image: url("https://cdn.wallpapersafari.com/69/18/kWAzBa.jpg");
+    background-repeat: repeat-x;
+}
+
+
+.layer2-bg {
+    background-image: url("../public/Para/planet-1.png");
+    background-size: 400px;
+    background-repeat: no-repeat;
+}
+
+.bg-blur {
+    filter: blur(1px);
+    transition: filter 500ms ease-in-out;
+}
+
+.layer4-bg {
+    background-image: url("../public/Para/planet-3.png");
+    background-repeat: no-repeat;
+    background-size: 300px;
+}
+.layer5-bg {
+    background-image: url('../public/Para/planet-2.png');
+    background-repeat: no-repeat;
+}
+
+
+.cockpit-bg {
+    background-image: url("../public/Para/Cockpit.png");
+    background-repeat: no-repeat;
+}
+
+.nav-perspective {
+    transform: perspective(300px) rotateX(45deg) translateY(15px) skewX(5.5deg);
+    transform-style: preserve-3d;
+}
