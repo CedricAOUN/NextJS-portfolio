@@ -22,11 +22,16 @@ module.exports = {
           '0%': { transform: 'rotateX(360deg)', opacity: '0%' },
           '100%': { transform: 'rotateX(0deg)', opacity: '100%' },
         },
+        'inf-spin': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
       },
       animation: {
         'slide-fade-in': 'slide-fade-in 1.5s linear 1',
         'rotate-360': 'rotate-360 0.5s linear 1',
         'rotate-360-alt': 'rotate-360-alt 0.5s linear reverse',
+        'inf-spin': 'inf-spin 1s linear infinite',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

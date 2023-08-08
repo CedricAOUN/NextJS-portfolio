@@ -72,3 +72,21 @@
     transform: perspective(300px) rotateX(45deg) translateY(15px) skewX(5.5deg);
     transform-style: preserve-3d;
 }
+
+.outer-glow {
+    box-shadow: 0 0 50px 5px #0000CC;
+}
+
+.down-triang {
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+
+.centered {
+    position: fixed;
+    top: 74%;
+    left: 49.7%;
+    transform: translate(-50%, -50%);
+    z-index: 51;
+}
+
+

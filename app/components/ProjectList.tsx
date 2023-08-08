@@ -5,7 +5,7 @@ export const ProjectList = async () => {
   const projectData = await getGithubProjects().then((res) => res.data);
 
   await projectData.map((project: any) => {
-    if (project.homepage != null) generateImage(project.homepage, project.name);
+    if (project.homepage) generateImage(project.homepage, project.name);
   });
 
   const displayProjects: any[] = await createProjects();

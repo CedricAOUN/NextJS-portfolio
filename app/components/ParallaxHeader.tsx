@@ -2,37 +2,37 @@
 import { useEffect, useState } from 'react';
 
 export const ParallaxHeader = () => {
-  const [mousePos, setMousePos] = useState<{ mouseX: number; mouseY: number }>({
-    mouseX: 0,
-    mouseY: 0,
+  const [state, setState] = useState({
+    mousePos: { mouseX: 0, mouseY: 0 },
+    blur: false,
+    rotationDegs: 0,
+    scrollY: 0,
+    windowDimensions: { width: 0, height: 0 },
   });
-  const [blur, setBlur] = useState<boolean>(false);
-  const [rotationDegs, setRotationDegs] = useState<number>(0);
 
-  const windowDimensions = {
-    width: window?.innerWidth / 2,
-    height: window?.innerHeight / 2,
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setState((prevState) => ({
+        ...prevState,
+        scrollY: window.scrollY,
+      }));
+    };
 
-  const layer1pos = `${
-    50 - (mousePos.mouseX - windowDimensions.width) * 0.01
-  }% ${50 - (mousePos.mouseY - windowDimensions.height) * 0.01}%`;
+    window.addEventListener('scroll', handleScroll);
 
-  const layer2pos = `${
-    50 - (mousePos.mouseX - windowDimensions.width) * 0.02
-  }% ${50 - (mousePos.mouseY - windowDimensions.height) * 0.02}%`;
-
-  const layer3pos = `${
-    50 - (mousePos.mouseX - windowDimensions.width) * 0.03
-  }% ${50 - (mousePos.mouseY - windowDimensions.height) * 0.03}%`;
-
-  const layer4pos = `${
-    50 - (mousePos.mouseX - windowDimensions.width) * 0.05
-  }% ${50 - (mousePos.mouseY - windowDimensions.height) * 0.05}%`;
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: any) => {
-      setMousePos({ mouseX: e.clientX, mouseY: e.clientY });
+      if (state.scrollY === 0) {
+        setState((prevState) => ({
+          ...prevState,
+          mousePos: { mouseX: e.clientX, mouseY: e.clientY },
+        }));
+      }
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -40,32 +40,61 @@ export const ParallaxHeader = () => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []);
+  }, [state.scrollY]);
 
   useEffect(() => {
-    setBlur(true);
-    let blurTimeout = setTimeout(() => setBlur(false), 50);
+    setState((prevState) => ({
+      ...prevState,
+      blur: true,
+    }));
+
+    const blurTimeout = setTimeout(() => {
+      setState((prevState) => ({
+        ...prevState,
+        blur: false,
+      }));
+    }, 50);
 
     return () => clearTimeout(blurTimeout);
-  }, [mousePos]);
+  }, [state.mousePos]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setState((prevState) => ({
+        ...prevState,
+        windowDimensions: {
+          width: window.innerWidth / 2,
+          height: window.innerHeight / 2,
+        },
+      }));
+    }
+  }, []);
+
+  const calculateLayerPos = (speed: number) =>
+    `${50 - (state.mousePos.mouseX - state.windowDimensions.width) * speed}% ${
+      50 - (state.mousePos.mouseY - state.windowDimensions.height) * speed
+    }%`;
+
+  const layer1pos = calculateLayerPos(0.01);
+  const layer2pos = calculateLayerPos(0.02);
+  const layer3pos = calculateLayerPos(0.03);
+  const layer4pos = calculateLayerPos(0.05);
 
   return (
     <div
+      id={'top'}
       className={`layer1-bg h-screen w-screen bg-cover bg-center`}
       style={{ backgroundPosition: layer1pos }}
     >
-      <p className={'text-green-500'}>
-        {mousePos.mouseX} - {mousePos.mouseY} - {windowDimensions.width}
-      </p>
       <div
         className={`${
-          blur ? 'bg-blur' : ''
+          state.blur ? 'bg-blur' : ''
         } layer2-bg absolute left-0 top-0 h-2/3 w-1/2`}
         style={{ backgroundPosition: layer2pos }}
       ></div>
       <div
         className={`${
-          blur ? 'bg-blur' : ''
+          state.blur ? 'bg-blur' : ''
         } layer5-bg absolute right-0 top-0 h-full w-1/2`}
         style={{ backgroundPosition: layer3pos }}
       ></div>
@@ -85,7 +114,7 @@ export const ParallaxHeader = () => {
       </div>
       <div
         className={`${
-          blur ? 'bg-blur' : ''
+          state.blur ? 'bg-blur' : ''
         } layer4-bg absolute bottom-0 right-0 h-1/2 w-full`}
         style={{ backgroundPosition: layer4pos }}
       ></div>

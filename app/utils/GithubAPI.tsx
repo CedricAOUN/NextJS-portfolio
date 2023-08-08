@@ -1,6 +1,7 @@
 let axios = require('axios');
 let puppet = require('puppeteer');
 let fs = require('fs');
+let path = require('path');
 
 export async function getGithubProjects() {
   return await axios.get('https://api.github.com/users/CedricAOUN/repos', {
@@ -11,9 +12,11 @@ export async function getGithubProjects() {
 }
 
 export function generateImage(url: string, name: string) {
+  const cacheURL = 'puppet-cache';
   if (!fs.existsSync(`public/Projects/${name}.png`)) {
     puppet
       .launch({
+        userDataDir: cacheURL,
         defaultViewport: {
           width: 1920,
           height: 1080,
@@ -27,11 +30,13 @@ export function generateImage(url: string, name: string) {
           '--disable-gpu-shader-disk-cache',
           '--media-cache-size=0',
           '--disk-cache-size=0',
+          '--no-sandbox',
         ],
       })
       .then(async (browser: any) => {
         if (url != null && url != '') {
-          const page = await browser.newPage();
+          const context = await browser.createIncognitoBrowserContext();
+          const page = await context.newPage();
           await page.setCacheEnabled(false);
           await page.goto(url);
           if (name == 'f1-weather-forecast') {
