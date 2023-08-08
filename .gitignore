@@ -36,3 +36,7 @@ next-env.d.ts
 
 # puppeteer cache
 puppet-cache
+
+# IDE
+*.idea
+*.iml
