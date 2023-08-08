@@ -22,20 +22,22 @@ export const ExpertiseList = () => {
 
   return (
     <>
-      <ul
-        className={
-          'max-h-40 overflow-scroll rounded border-2 text-center text-black dark:text-white'
-        }
-      >
-        {expertise.map((exp, index) => (
-          <li
-            key={index}
-            className={' border-b-2 border-black p-2 dark:border-white'}
-          >
-            {exp}
-          </li>
-        ))}
-      </ul>
+      <div className={'scroll-color mx-auto max-w-[200px] bg-gray-400'}>
+        <ul
+          className={
+            'max-h-[190px] overflow-scroll rounded border-2 text-center text-black dark:text-white'
+          }
+        >
+          {expertise.map((exp, index) => (
+            <li
+              key={index}
+              className={' border-b-2 border-black p-2 dark:border-white'}
+            >
+              {exp}
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 };

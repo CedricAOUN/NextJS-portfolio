@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 
+.scroll-color {
+    scrollbar-color: #0000CC white;
+    scrollbar-width: auto;
+}
+
+
 .flag-bg {
     background-clip: text;
     -webkit-background-clip: text;

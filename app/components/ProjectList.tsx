@@ -11,7 +11,7 @@ export const ProjectList = async () => {
   const displayProjects: any[] = await createProjects();
 
   async function createProjects() {
-    const exludeList: string[] = ['CedricAOUN'];
+    const exludeList: string[] = ['CedricAOUN', 'NextJS-portfolio'];
 
     const sortedProjects: any[] = projectData.sort((a: any, b: any) => {
       let aValue = a.homepage;

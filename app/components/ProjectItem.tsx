@@ -42,11 +42,16 @@ export const ProjectItem = (props: Props) => {
           repoURL={props.repoURL}
           title={nameFormater(props.name)}
         >
-          <img
-            className='bg rounded-t-lg'
-            src={props.homepage ? props.imgUrl : '/no-image.png'}
-            alt=''
-          />
+          <div className={'group'}>
+            <img
+              className=' custom-after box-border rounded-t-lg border-2 border-transparent group-hover:border-cyan-500'
+              src={props.homepage ? props.imgUrl : '/no-image.png'}
+              alt=''
+            />
+            <span className={'absolute hidden text-cyan-400 group-hover:block'}>
+              Hologram
+            </span>
+          </div>
         </HoloModal>
       )) || (
         <img
