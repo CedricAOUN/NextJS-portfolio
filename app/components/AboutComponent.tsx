@@ -8,8 +8,8 @@ export const AboutComponent = () => {
           About me
         </h2>
         <p className='mb-8 text-center font-light text-gray-500 dark:text-gray-400 sm:text-xl lg:mb-16'>
-          Currently looking for work, I'm a Web/Python developer with some
-          knowledge of C# and game development with Unity. I'm mostly
+          Currently looking for work, I&apos;m a Web/Python developer with some
+          knowledge of C# and game development with Unity. I&apos;m mostly
           self-educated, but I also have certificates in Web Development at CNAM
           University, Paris, as well as a python course at GRETA METEHOR.
           Programming is a passion for me therefore I can learn and adapt to
