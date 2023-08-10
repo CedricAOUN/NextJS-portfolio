@@ -20,7 +20,7 @@ const customTheme: CustomFlowbiteTheme['modal'] = {
   },
   content: {
     inner:
-      'flex bg-cyan-500 bg-opacity-50 dark:bg-opacity-50 rounded-2xl text-white animate-holo-open',
+      'flex bg-cyan-500 bg-opacity-50 dark:bg-opacity-50 rounded border-2 border-cyan-400 modal-bg text-white animate-holo-open',
   },
 };
 
@@ -54,7 +54,7 @@ export default function HoloModal(props: Props) {
           className={'z-[55] bg-opacity-20'}
         >
           <div
-            className={`flex h-[calc(100vh-20rem)] w-full flex-col items-center justify-center rounded-2xl p-4`}
+            className={`flex h-[calc(100vh-10rem)] md:h-[calc(100vh-20rem)] w-full flex-col items-center justify-center rounded-2xl p-4`}
           >
             <div className={'flex w-[100%] justify-center py-2'}>
               <h2 className={`text-center text-2xl ${orbitron.className}`}>{props.title}</h2>

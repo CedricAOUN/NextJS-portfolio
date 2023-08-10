@@ -56,7 +56,7 @@ export const ProjectItem = (props: Props) => {
         </HoloModal>
       )) || (
         <img
-          className='bg rounded-t-lg'
+          className='bg rounded-t-lg max-h-[180px] max-w-full w-full'
           src={props.homepage ? props.imgUrl : '/no-image.png'}
           alt=''
         />

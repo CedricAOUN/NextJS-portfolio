@@ -11,6 +11,11 @@ export const NavBar = () => {
     const yoke: string = 'steering-yoke.svg';
     const lens: string = 'holo-lens.svg';
 
+    function is_touch_enabled() {
+        return ( 'ontouchstart' in window ) ||
+            ( navigator.maxTouchPoints > 0 )
+    }
+
     useEffect(() => {
         let box = steeringRef.current;
         let boxBoundingRect = box.getBoundingClientRect();
@@ -70,7 +75,7 @@ export const NavBar = () => {
     return (
         <>
             <nav
-                className={`nav-perspective outer-glow fixed bottom-0 left-[16.7%] z-50 h-28 w-2/3 bg-gradient-to-r from-[color:#0000FF] via-white to-[color:#0000FF] p-2 text-center font-bold text-white`}
+                className={`nav-perspective outer-glow fixed bottom-0 left-[16.7%] z-50 h-28 w-2/3 nav-bg p-2 text-center font-bold text-white`}
             >
                 <div
                     className={
@@ -80,20 +85,20 @@ export const NavBar = () => {
                     <button
                         onClick={() => scrollToAnchor('top')}
                         className={
-                            'hidden border-4 border-neutral-800 bg-white p-4 text-center text-xs text-black shadow-md shadow-white transition-all duration-75 hover:bg-neutral-500 hover:text-white active:mt-1 active:shadow-none lg:block'
+                            'hidden border-4 tracking-wider border-neutral-800 bg-white p-4 text-center text-xs text-black shadow-md shadow-white transition-all duration-75 hover:bg-neutral-500 hover:text-white active:mt-1 active:shadow-none lg:block'
                         }>FLIGHT DECK
                     </button>
                     <button onClick={() => scrollToAnchor('about')}
                             className={
-                                'hidden border-4 border-neutral-800 bg-white p-4 text-center text-xs text-black shadow-md shadow-white transition-all duration-75 hover:bg-neutral-500 hover:text-white active:mt-1 active:shadow-none lg:block '
+                                'hidden border-4 tracking-wider border-neutral-800 bg-white p-4 text-center text-xs text-black shadow-md shadow-white transition-all duration-75 hover:bg-neutral-500 hover:text-white active:mt-1 active:shadow-none lg:block '
                             }>ABOUT
                     </button>
                     <div
                         ref={steeringRef}
-                        className={`z-50 mx-5 mb-20 overflow-visible rounded-2xl bg-white px-5 py-5 min-w-max`}
+                        className={`z-50 mx-5 mb-20 overflow-visible rounded-2xl p-1 min-w-max`}
                     >
                         <div
-                            className={`bg-grid-white border-2 bg-cyan-700 bg-[length:150px_150px] bg-center p-4`}
+                            className={`bg-grid-white border-2 bg-[length:300px_300px] rounded bg-center p-4`}
                         >
                             <img
                                 alt=''
@@ -103,7 +108,7 @@ export const NavBar = () => {
                                         : isProjecting
                                             ? 'animate-inf-spin'
                                             : 'animate-rotate-360'
-                                }`}
+                                }  ${is_touch_enabled() ? '': 'transition-all duration-[5000ms]' } rotate-0`}
                                 src={showYoke ? yoke : lens}
                                 style={{
                                     height: '50px',
@@ -117,13 +122,13 @@ export const NavBar = () => {
                     </div>
                     <button onClick={() => scrollToAnchor('projects')}
                             className={
-                                ' hidden border-4 border-neutral-800 bg-white p-4 text-center text-xs text-black shadow-md shadow-white transition-all duration-75 hover:bg-neutral-500 hover:text-white active:mt-1 active:shadow-none lg:block'
+                                ' hidden border-4 tracking-wider border-neutral-800 bg-white p-4 text-center text-xs text-black shadow-md shadow-white transition-all duration-75 hover:bg-neutral-500 hover:text-white active:mt-1 active:shadow-none lg:block'
                             }>PROJECTS
                     </button>
 
                     <button onClick={() => scrollToAnchor('contact')}
                             className={
-                                'hidden border-4 border-neutral-800 bg-white p-4 text-center text-xs text-black shadow-md shadow-white transition-all duration-75 hover:bg-neutral-500 hover:text-white active:mt-1 active:shadow-none lg:block'
+                                'hidden border-4 tracking-wider border-neutral-800 bg-white p-4 text-center text-xs text-black shadow-md shadow-white transition-all duration-75 hover:bg-neutral-500 hover:text-white active:mt-1 active:shadow-none lg:block'
                             }>CONTACT
                     </button>
                 </div>
@@ -131,7 +136,7 @@ export const NavBar = () => {
             {!showYoke && isProjecting && (
                 <div
                     className={
-                        'centered down-triang h-[25rem] w-[20rem] animate-pulse bg-cyan-400 bg-opacity-30'
+                        'centered down-triang h-[25rem] w-[15rem] animate-pulse bg-cyan-400 bg-opacity-30'
                     }
                 ></div>
             )}

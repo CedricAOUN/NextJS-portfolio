@@ -22,12 +22,17 @@
 }
 
 .header-text-shadow {
-    text-shadow: 1px 1px 2px #028bfa, 0 0 1em #5effff, 0 0 0.2em #ffffff;
+    text-shadow: 1px 1px 2px rgba(0,251,242,1), 0 0 1em #5effff, 0 0 0.2em rgba(17,24,39,1);
 }
 
 
 .bg-grid-white {
-    background-image: url("../public/white-grid.png");
+    background: radial-gradient(circle, rgba(0,251,242,1) 12%, rgba(145,0,251,1) 58%, rgba(17,24,39,1) 100%);
+    background-size: contain;
+}
+
+.nav-bg {
+    background: radial-gradient(circle, rgba(0,251,242,1) 12%, rgba(145,0,251,1) 58%, rgb(54, 1, 162) 100%);
 }
 
 
@@ -78,7 +83,7 @@
 }
 
 .outer-glow {
-    box-shadow: 0 0 50px 5px #0000CC;
+    box-shadow: 0 0 10px 5px #9cfff2;
 }
 
 .down-triang {
@@ -92,5 +97,37 @@
     transform: translate(-51%, -50%);
     z-index: 51;
 }
+
+
+
+.modal-bg:before {
+    content: "";
+    z-index: 100;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, #80ffff -50%, #80ffff 150% );
+    transform: translate3d(0px, 0px, 0) scale(0.91);
+    filter: blur(500px);
+    opacity: 0.32;
+    transition: opacity 0.3s;
+    border-radius: inherit;
+}
+
+.modal-bg::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: inherit;
+    border-radius: inherit;
+}
+
 
 

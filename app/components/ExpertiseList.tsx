@@ -20,7 +20,7 @@ export const ExpertiseList = () => {
 
   return (
     <>
-      <div className={'scroll-color mx-auto flex justify-center gap-12 flex-wrap'}>
+      <div className={'scroll-color mx-auto flex justify-center gap-12 flex-wrap bg-gray-600 rounded-xl p-4 shadow-neutral-400 shadow-inner'}>
         {expertise.map((exp, index) => {
           return <div key={`devicon-${index}`} className={'flex justify-center flex-col text-center'}>
             <label className={'text-white'}>{exp}</label>
