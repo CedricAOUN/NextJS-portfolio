@@ -12,10 +12,11 @@ export const ParallaxHeader = () => {
     });
 
 
-    function is_touch_enabled() {
-        return ('ontouchstart' in window) ||
-            (navigator.maxTouchPoints > 0)
-    }
+    // function is_touch_enabled() {
+    //
+    //     return ('ontouchstart' in window) ||
+    //         (navigator.maxTouchPoints > 0)
+    // }
 
     useEffect(() => {
         const handleScroll = () => {
