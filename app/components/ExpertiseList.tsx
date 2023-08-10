@@ -1,3 +1,5 @@
+import 'devicon/devicon.min.css'
+
 export const ExpertiseList = () => {
   const expertise: string[] = [
     'html5',
@@ -20,11 +22,12 @@ export const ExpertiseList = () => {
 
   return (
     <>
-      <div className={'scroll-color mx-auto flex justify-center gap-12 flex-wrap bg-gray-600 rounded-xl p-4 shadow-neutral-400 shadow-inner'}>
+      <div className={'scroll-color mx-auto flex justify-center gap-12 flex-wrap rounded px-4 py-8 shadow-inner shadow-gray-900'}>
         {expertise.map((exp, index) => {
           return <div key={`devicon-${index}`} className={'flex justify-center flex-col text-center'}>
             <label className={'text-white'}>{exp}</label>
-            <img alt={exp} src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${exp}/${exp}-${exp == 'tailwindcss' ? 'plain': 'original'}.svg`} className={'h-12'}/>
+
+            <i className={`devicon-${exp}-plain text-white text-4xl ${exp == 'express' && 'devicon-express-original'}`} color={'white'}></i>
           </div>
         })}
       </div>

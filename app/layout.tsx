@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import {inter} from "@/app/utils/fonts";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: 'Cedric Aoun - Portfolio',
