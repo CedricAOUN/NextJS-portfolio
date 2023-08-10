@@ -1,6 +1,5 @@
 'use client';
 import {useEffect, useRef, useState} from 'react';
-import {set} from 'zod';
 
 export const NavBar = () => {
     const steeringRef = useRef<any>('');
