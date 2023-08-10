@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import {orbitron} from '../utils/fonts'
 
 export const ParallaxHeader = () => {
   const [state, setState] = useState({
@@ -89,17 +90,17 @@ export const ParallaxHeader = () => {
       <div
         className={`${
           state.blur ? 'bg-blur' : ''
-        } layer2-bg absolute left-0 top-0 h-2/3 w-1/2`}
+        } layer2-bg absolute left-0 top-0 h-5/6 w-1/2 bg-[length:180px] md:bg-[length:340px] xl:bg-[length:550px]`}
         style={{ backgroundPosition: layer2pos }}
       ></div>
       <div
         className={`${
           state.blur ? 'bg-blur' : ''
-        } layer5-bg absolute right-0 top-0 h-full w-1/2`}
+        } layer5-bg absolute right-0 top-0 h-full w-1/2 bg-[length:150px] md:bg-[length:300px] xl:bg-[length:400px] `}
         style={{ backgroundPosition: layer3pos }}
       ></div>
       <div
-        className={`absolute top-0 flex h-full w-full flex-col items-center justify-center text-center drop-shadow-xl`}
+        className={`absolute top-0 flex h-full w-full flex-col items-center justify-center text-center drop-shadow-xl ${orbitron.className}`}
       >
         <h1
           className={
@@ -115,11 +116,11 @@ export const ParallaxHeader = () => {
       <div
         className={`${
           state.blur ? 'bg-blur' : ''
-        } layer4-bg absolute bottom-0 right-0 h-1/2 w-full`}
+        } layer4-bg absolute bottom-0 right-0 h-1/2 w-full bg-[length:100px] md:bg-[length:200px] xl:bg-[length:300px] `}
         style={{ backgroundPosition: layer4pos }}
       ></div>
       <div
-        className={`cockpit-bg absolute bottom-0 min-h-screen w-full bg-cover bg-center`}
+        className={`cockpit-bg absolute bottom-0 w-full h-full bg-cover bg-center hidden lg:block`}
       ></div>
     </div>
   );

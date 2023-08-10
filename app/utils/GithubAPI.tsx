@@ -56,10 +56,11 @@ export async function generateImage(url: string, name: string) {
     })
     try {
       await fs.writeFileSync(`public/Projects/${name}.png`, response.data);
+      console.log('Generating Image...')
     } catch (e) {
       console.log('error with file write:', e)
     }
   } else {
-    console.log('image already exists')
+    console.log('Image already exists')
   }
 }

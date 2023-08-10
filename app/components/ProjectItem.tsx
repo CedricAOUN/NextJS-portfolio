@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import HoloModal from '@/app/components/HoloModal';
 import { useState } from 'react';
+import {orbitron} from "@/app/utils/fonts";
 
 interface Props {
   name: string;
@@ -48,7 +49,7 @@ export const ProjectItem = (props: Props) => {
               src={props.homepage ? props.imgUrl : '/no-image.png'}
               alt=''
             />
-            <span className={'absolute hidden text-cyan-400 group-hover:block'}>
+            <span className={`absolute hidden text-cyan-400 group-hover:block ${orbitron.className}`}>
               Hologram
             </span>
           </div>
@@ -61,7 +62,7 @@ export const ProjectItem = (props: Props) => {
         />
       )}
       <div className='p-5'>
-        <h5 className='mb-2 text-2xl font-bold tracking-tight dark:text-white'>
+        <h5 className={`mb-2 text-2xl font-bold tracking-tight dark:text-white ${orbitron.className}`}>
           {nameFormater(props.name)}
         </h5>
         <p className='mb-3 font-normal text-gray-700 dark:text-gray-400'>

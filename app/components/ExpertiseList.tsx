@@ -1,42 +1,32 @@
 export const ExpertiseList = () => {
   const expertise: string[] = [
-    'HTML',
-    'CSS',
-    'JS',
-    'NodeJS',
+    'html5',
+    'css3',
+    'javascript',
+    'nodejs',
     'express',
-    'ReactJS',
-    'SocketIO',
-    'MaterialUI',
-    'jQuery',
-    'Bootstrap',
-    'MySQL(MySQL Workbench, WAMP)',
-    'MongoDB',
-    'Wordpress',
-    'Docker',
-    'NextJS',
-    'Puppeteer',
-    'Tailwind',
-    'Flowbite',
+    'react',
+    'socketio',
+    'materialui',
+    'jquery',
+    'bootstrap',
+    'mysql',
+    'mongodb',
+    'wordpress',
+    'docker',
+    'nextjs',
+    'tailwindcss',
   ];
 
   return (
     <>
-      <div className={'scroll-color mx-auto max-w-[200px] bg-gray-400'}>
-        <ul
-          className={
-            'max-h-[190px] overflow-scroll rounded border-2 text-center text-black dark:text-white'
-          }
-        >
-          {expertise.map((exp, index) => (
-            <li
-              key={index}
-              className={' border-b-2 border-black p-2 dark:border-white'}
-            >
-              {exp}
-            </li>
-          ))}
-        </ul>
+      <div className={'scroll-color mx-auto flex justify-center gap-12 flex-wrap'}>
+        {expertise.map((exp, index) => {
+          return <div key={`devicon-${index}`} className={'flex justify-center flex-col text-center'}>
+            <label className={'text-white'}>{exp}</label>
+            <img alt={exp} src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${exp}/${exp}-${exp == 'tailwindcss' ? 'plain': 'original'}.svg`} className={'h-12'}/>
+          </div>
+        })}
       </div>
     </>
   );

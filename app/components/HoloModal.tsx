@@ -3,6 +3,7 @@
 import { Button, CustomFlowbiteTheme, Modal } from 'flowbite-react';
 import { ReactNode, useEffect, useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
+import {orbitron} from "@/app/utils/fonts";
 
 interface Props {
   src: string;
@@ -12,6 +13,11 @@ interface Props {
 }
 
 const customTheme: CustomFlowbiteTheme['modal'] = {
+  root: {
+    show: {
+      on: 'flex bg-gray-900 bg-opacity-30 dark:bg-opacity-50'
+    }
+  },
   content: {
     inner:
       'flex bg-cyan-500 bg-opacity-50 dark:bg-opacity-50 rounded-2xl text-white animate-holo-open',
@@ -51,7 +57,7 @@ export default function HoloModal(props: Props) {
             className={`flex h-[calc(100vh-20rem)] w-full flex-col items-center justify-center rounded-2xl p-4`}
           >
             <div className={'flex w-[100%] justify-center py-2'}>
-              <h1 className={'text-center text-2xl'}>{props.title}</h1>
+              <h2 className={`text-center text-2xl ${orbitron.className}`}>{props.title}</h2>
               <span className={'ml-auto'}>
                 <AiOutlineClose
                   color='white'
