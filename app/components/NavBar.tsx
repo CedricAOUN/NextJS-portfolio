@@ -11,10 +11,10 @@ export const NavBar = () => {
     const yoke: string = 'steering-yoke.svg';
     const lens: string = 'holo-lens.svg';
 
-    function is_touch_enabled() {
-        return ( 'ontouchstart' in window ) ||
-            ( navigator.maxTouchPoints > 0 )
-    }
+    // function is_touch_enabled() {
+    //     return ( 'ontouchstart' in window ) ||
+    //         ( navigator.maxTouchPoints > 0 )
+    // }
 
     useEffect(() => {
         let box = steeringRef.current;
@@ -108,7 +108,7 @@ export const NavBar = () => {
                                         : isProjecting
                                             ? 'animate-inf-spin'
                                             : 'animate-rotate-360'
-                                }  ${is_touch_enabled() ? '': 'transition-all duration-[5000ms]' } rotate-0`}
+                                } `}
                                 src={showYoke ? yoke : lens}
                                 style={{
                                     height: '50px',
