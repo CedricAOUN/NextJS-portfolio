@@ -4,8 +4,8 @@ import { ProjectItem } from '@/app/components/ProjectItem';
 export const ProjectList = async () => {
   const projectData = await getGithubProjects().then((res) => res.data);
 
-  await projectData.map((project: any) => {
-    if (project.homepage) generateImage(project.homepage, project.name);
+  await projectData.map(async (project: any) => {
+    if (project.homepage) await generateImage(project.homepage, project.name);
   });
 
   const displayProjects: any[] = await createProjects();
