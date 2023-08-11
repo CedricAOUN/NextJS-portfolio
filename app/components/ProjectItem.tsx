@@ -69,24 +69,24 @@ export const ProjectItem = (props: Props) => {
           {props.description}
         </p>
         <div className={'block'}>
-          {props.homepage ? (
-            <Link
-              href={props.homepage ? props.homepage : ''}
+          {/*{props.homepage ? (*/}
+          {/*  <Link*/}
+          {/*    href={props.homepage ? props.homepage : ''}*/}
+          {/*    target={'_blank'}*/}
+          {/*    className={`*/}
+          {/*    mx-2 inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800*/}
+          {/*  `}*/}
+          {/*  >*/}
+          {/*    Visit*/}
+          {/*  </Link>*/}
+          {/*) : null}*/}
+          { !props.homepage && <Link
+              href={props.repoURL}
               target={'_blank'}
-              className={`
-              mx-2 inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800
-            `}
-            >
-              Visit
-            </Link>
-          ) : null}
-          <Link
-            href={props.repoURL}
-            target={'_blank'}
-            className='mx-2 inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+              className='mx-2 inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
           >
             Repo
-          </Link>
+          </Link>}
         </div>
       </div>
     </div>

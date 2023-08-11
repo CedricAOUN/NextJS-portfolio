@@ -11,8 +11,8 @@ module.exports = {
     extend: {
       keyframes: {
         'slide-fade-in': {
-          '0%': { transform: 'translate(-500px, 0);', opacity: '0%' },
-          '100%': { transform: 'translate(0, 0);', opacity: '100%' },
+          '0%': {  opacity: '0%' },
+          '100%': {  opacity: '100%' },
         },
         'rotate-360': {
           '0%': { transform: 'rotateX(0deg)', opacity: '0%' },
@@ -32,7 +32,7 @@ module.exports = {
         },
       },
       animation: {
-        'slide-fade-in': 'slide-fade-in 1.5s linear 1',
+        'slide-fade-in': 'slide-fade-in 3s linear 1',
         'rotate-360': 'rotate-360 0.5s linear 1',
         'rotate-360-alt': 'rotate-360-alt 0.5s linear reverse',
         'inf-spin': 'inf-spin 1s linear infinite',

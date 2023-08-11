@@ -91,7 +91,7 @@ export const ParallaxHeader = () => {
     return (
         <div
             id={'top'}
-            className={`layer1-bg h-screen w-screen bg-cover bg-center`}
+            className={`layer1-bg h-screen w-screen bg-cover bg-center fixed top-0 z-[-1] ${!state.scrollY && 'cursor-none'}`}
             style={{backgroundPosition: layer1pos}}
         >
             <div
@@ -107,11 +107,11 @@ export const ParallaxHeader = () => {
                 style={{backgroundPosition: layer3pos}}
             ></div>
             <div
-                className={`absolute top-0 flex h-full w-full flex-col items-center justify-center text-center drop-shadow-xl ${orbitron.className}`}
+                className={`absolute top-0 flex h-full w-full flex-col items-center justify-center text-center drop-shadow-xl transition-opacity duration-500 ${state.scrollY && 'opacity-0'} ${orbitron.className}`}
             >
                 <h1
                     className={
-                        'header-text-shadow animate-slide-fade-in font-orbit text-5xl font-extrabold tracking-tight text-amber-400'
+                        'header-text-shadow animate-slide-fade-in font-orbit text-5xl font-extrabold tracking-tight text-white'
                     }
                 >
                     The Final Frontier
@@ -126,9 +126,9 @@ export const ParallaxHeader = () => {
                 } layer4-bg absolute bottom-0 right-0 h-1/2 w-full bg-[length:100px] md:bg-[length:200px] xl:bg-[length:300px]`}
                 style={{backgroundPosition: layer4pos}}
             ></div>
-            <div
-                className={`cockpit-bg absolute bottom-0 w-full h-full bg-cover bg-center hidden lg:block`}
-            ></div>
+            {/*<div*/}
+            {/*    className={`cockpit-bg absolute bottom-0 w-full h-full bg-cover bg-center hidden lg:block`}*/}
+            {/*></div>*/}
         </div>
     );
 };

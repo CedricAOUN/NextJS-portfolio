@@ -1,6 +1,7 @@
 'use client';
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import {orbitron} from "@/app/utils/fonts";
 
 export const ContactForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -53,9 +54,9 @@ export const ContactForm = () => {
 
   return (
     <>
-      <section className='bg-white dark:bg-gray-900' id={'contact'}>
+      <section className='bg-white dark:bg-gray-900 min-h-[100svh]' id={'contact'}>
         <div className='mx-auto max-w-screen-md px-4 py-8 lg:py-16'>
-          <h2 className='mb-4 text-center text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white'>
+          <h2 className={`mb-4 text-center text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white ${orbitron.className}`}>
             Contact Me
           </h2>
           <p className='mb-8 text-center font-light text-gray-500 dark:text-gray-400 sm:text-xl lg:mb-16'></p>
@@ -134,12 +135,13 @@ export const ContactForm = () => {
             <button
               type='submit'
               onClick={handleSubmit}
-              className='hover:bg-primary-800 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 rounded-lg bg-blue-700 px-5 py-3 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 sm:w-fit'
+              className='hover:bg-neutral-900 focus:ring-primary-300 dark:bg-white dark:hover:bg-neutral-900 dark:focus:ring-primary-800 rounded bg-blue-700 px-5 py-3 text-center text-sm font-medium text-black hover:text-white focus:outline-none focus:ring-4 sm:w-fit transition-colors duration-300'
             >
               Send message
             </button>
           </form>
         </div>
+        <p className={` text-center text-white bg-gray-900`}>Copyright © 2023 Cedric Aoun, All Rights Reserved</p>
       </section>
     </>
   );

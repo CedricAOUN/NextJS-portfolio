@@ -20,7 +20,7 @@ const customTheme: CustomFlowbiteTheme['modal'] = {
   },
   content: {
     inner:
-      'flex bg-cyan-500 bg-opacity-50 dark:bg-opacity-50 rounded border-2 border-cyan-400 modal-bg text-white animate-holo-open',
+      'flex bg-cyan-500 bg-opacity-50 dark:bg-opacity-50 rounded border-2 border-cyan-400 modal-bg text-white animate-holo-open min-h-[75svh]',
   },
 };
 
@@ -51,12 +51,12 @@ export default function HoloModal(props: Props) {
           show={controls.openModal === 'modal'}
           onClose={() => controls.setOpenModal(undefined)}
           size={'7xl'}
-          className={'z-[55] bg-opacity-20'}
+          className={'z-[55] bg-opacity-0'}
         >
           <div
-            className={`flex h-[calc(100vh-10rem)] md:h-[calc(100vh-20rem)] w-full flex-col items-center justify-center rounded-2xl p-4`}
+            className={`flex w-full flex-col items-center justify-center rounded-2xl p-4`}
           >
-            <div className={'flex w-[100%] justify-center py-2'}>
+            <div className={'flex w-[100%] h-12 justify-center py-2'}>
               <h2 className={`text-center text-2xl ${orbitron.className}`}>{props.title}</h2>
               <span className={'ml-auto'}>
                 <AiOutlineClose
@@ -71,7 +71,7 @@ export default function HoloModal(props: Props) {
               src={props.src}
               width={'100%'}
               height={'100%'}
-              className={'bg-neutral-100'}
+              className={'bg-neutral-100 h-full'}
             ></iframe>
             <div
               className={

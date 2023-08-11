@@ -27,15 +27,13 @@
 
 
 .bg-grid-white {
-    background: radial-gradient(circle, rgba(0,251,242,1) 12%, rgba(145,0,251,1) 58%, rgba(17,24,39,1) 100%);
+    background: transparent;
     background-size: contain;
 }
 
 .nav-bg {
     background: radial-gradient(circle, rgba(0,251,242,1) 12%, rgba(145,0,251,1) 58%, rgb(54, 1, 162) 100%);
 }
-
-
 
 
 .nav-button-clip {
@@ -47,7 +45,7 @@
 }
 
 .layer1-bg {
-    background-image: url("https://cdn.wallpapersafari.com/69/18/kWAzBa.jpg");
+    background-image: url("https://www.pixelstalk.net/wp-content/uploads/images6/Space-Desktop-Backgrounds-4K.jpg");
     background-repeat: repeat-x;
 }
 
@@ -79,7 +77,6 @@
 
 .nav-perspective {
     transform: perspective(300px) rotateX(45deg) translateY(15px) skewX(5.5deg);
-    transform-style: preserve-3d;
 }
 
 .outer-glow {
@@ -90,13 +87,22 @@
     clip-path: polygon(50% 100%, 0 0, 100% 0);
 }
 
+.controls {
+    left: 50%;
+    transform: translate(-51%, -50%);
+}
+
+
+
+
 .centered {
     position: fixed;
     top: calc(100svh - 17rem);
     left: 50%;
-    transform: translate(-51%, -50%);
+    transform: translate(-50.95%, -50%);
     z-index: 51;
 }
+
 
 
 

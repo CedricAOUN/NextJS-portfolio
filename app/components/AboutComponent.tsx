@@ -4,7 +4,7 @@ import {inter, orbitron} from "@/app/utils/fonts";
 
 export const AboutComponent = () => {
   return (
-    <section className='bg-white dark:bg-gray-900' id={'about'}>
+    <section className='bg-white dark:bg-gray-900 min-h-screen' id={'about'}>
       <div className='mx-auto max-w-screen-md px-4 py-8 lg:py-16'>
         <h2 className={`mb-4 text-center text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white ${orbitron.className} `}>
           About me
