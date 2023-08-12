@@ -1,172 +1,203 @@
-'use client';
-import {useEffect, useRef, useState} from 'react';
-import {FaSpaceShuttle} from "react-icons/fa";
-import {SiAboutdotme} from "react-icons/si";
-import {MdAlternateEmail} from "react-icons/md";
-import {LuMonitor} from "react-icons/lu";
+"use client";
+import { Fragment, useEffect, useRef, useState } from "react";
+import { FaSpaceShuttle } from "react-icons/fa";
+import { SiAboutdotme } from "react-icons/si";
+import { MdAlternateEmail } from "react-icons/md";
+import { LuMonitor } from "react-icons/lu";
+import { activeElement } from "@floating-ui/utils/react";
 
 export const NavBar = () => {
-    const steeringRef = useRef<any>('');
-    const [rotationDegs, setRotationDegs] = useState<number>(0);
-    const [isProjecting, setIsProjecting] = useState<boolean>(false);
-    const [showYoke, setShowYoke] = useState<boolean>(true);
+  const steeringRef = useRef<any>("");
+  const [rotationDegs, setRotationDegs] = useState<number>(0);
+  const [isProjecting, setIsProjecting] = useState<boolean>(false);
+  const [showYoke, setShowYoke] = useState<boolean>(true);
+  const [open, setOpen] = useState<boolean>(false);
+  const [currentSection, setCurrentSection] = useState<string>("top");
 
-    const yoke: string = 'testing-yoke.png';
-    const lens: string = 'holo-lens.png';
+  const yoke: string = "testing-yoke.png";
+  const lens: string = "holo-lens.png";
 
-    // function is_touch_enabled() {
-    //     return ( 'ontouchstart' in window ) ||
-    //         ( navigator.maxTouchPoints > 0 )
-    // }
+  // function is_touch_enabled() {
+  //     return ( 'ontouchstart' in window ) ||
+  //         ( navigator.maxTouchPoints > 0 )
+  // }
 
-    useEffect(() => {
-        let box = steeringRef.current;
-        let boxBoundingRect = box.getBoundingClientRect();
-        let boxCenter = {
-            x: boxBoundingRect.left + boxBoundingRect.width / 2,
-            y: boxBoundingRect.top + boxBoundingRect.height / 2,
-        };
+  function handleOpen() {
+    setOpen(!open);
+  }
 
-        const handleMouseMove = (e: any) => {
-            let angle =
-                Math.atan2(e.pageX - boxCenter.x, -(e.pageY - boxCenter.y)) *
-                (180 / Math.PI);
-            setRotationDegs(angle);
-        };
+  useEffect(() => {
+    let box = steeringRef.current;
+    let boxBoundingRect = box.getBoundingClientRect();
+    let boxCenter = {
+      x: boxBoundingRect.left + boxBoundingRect.width / 2,
+      y: boxBoundingRect.top + boxBoundingRect.height / 2,
+    };
 
-        window.addEventListener('mousemove', handleMouseMove);
+    const handleMouseMove = (e: any) => {
+      let angle =
+        Math.atan2(e.pageX - boxCenter.x, -(e.pageY - boxCenter.y)) *
+        (180 / Math.PI);
+      setRotationDegs(angle);
+    };
 
-        return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-        };
-    }, []);
+    window.addEventListener("mousemove", handleMouseMove);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY == 0) {
-                setShowYoke(true);
-            } else {
-                setShowYoke(false);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY == 0) {
+        setShowYoke(true);
+      } else {
+        setShowYoke(false);
+      }
+    };
+
+    function updateActiveSection() {
+      const sections = ["about", "projects", "contact"];
+
+      if (window.scrollY == 0) {
+        setCurrentSection("top");
+      } else {
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (
+              rect.top <= window.innerHeight / 2 &&
+              rect.bottom >= window.innerHeight / 2
+            ) {
+              setCurrentSection(section);
+              break;
             }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    useEffect(() => {
-        function handleProjecting(e: any) {
-            setIsProjecting(e.detail);
-            console.log('test');
+          }
         }
-
-        document.addEventListener('projecting-test', handleProjecting);
-        return () => {
-            document.removeEventListener('projecting-test', handleProjecting);
-        };
-    }, []);
-
-    function scrollToAnchor(anchorId: string) {
-        if (anchorId == 'top') {
-            window.scrollTo({top: 0, behavior: "smooth"})
-        } else {
-
-            const element = document.getElementById(anchorId);
-
-            element?.scrollIntoView({behavior: 'smooth'});
-        }
+      }
     }
 
-    return (
-        // <>
-        //     <nav
-        //         className={` outer-glow fixed bottom-0 left-[16.7%] z-50 h-28 w-2/3 nav-bg p-2 text-center font-bold text-white`}
-        //     >
-        //         <div
-        //             className={
-        //                 'flex h-full w-full items-center justify-center gap-1 bg-neutral-800 flex-shrink'
-        //             }
-        //         >
-        //             <button
-        //                 onClick={() => scrollToAnchor('top')}
-        //                 className={
-        //                     'hidden border-4 tracking-wider border-neutral-800 bg-white p-4 text-center text-xs text-black shadow-md shadow-white transition-all duration-75 hover:bg-neutral-500 hover:text-white active:mt-1 active:shadow-none lg:block'
-        //                 }>FLIGHT DECK
-        //             </button>
-        //             <button onClick={() => scrollToAnchor('about')}
-        //                     className={
-        //                         'hidden border-4 tracking-wider border-neutral-800 bg-white p-4 text-center text-xs text-black shadow-md shadow-white transition-all duration-75 hover:bg-neutral-500 hover:text-white active:mt-1 active:shadow-none lg:block '
-        //                     }>ABOUT
-        //             </button>
-        //
-        //             <button onClick={() => scrollToAnchor('projects')}
-        //                     className={
-        //                         ' hidden border-4 tracking-wider border-neutral-800 bg-white p-4 text-center text-xs text-black shadow-md shadow-white transition-all duration-75 hover:bg-neutral-500 hover:text-white active:mt-1 active:shadow-none lg:block'
-        //                     }>PROJECTS
-        //             </button>
-        //
-        //             <button onClick={() => scrollToAnchor('contact')}
-        //                     className={
-        //                         'hidden border-4 tracking-wider border-neutral-800 bg-white p-4 text-center text-xs text-black shadow-md shadow-white transition-all duration-75 hover:bg-neutral-500 hover:text-white active:mt-1 active:shadow-none lg:block'
-        //                     }>CONTACT
-        //             </button>
-        //         </div>
-        //     </nav>
-        //     {!showYoke && isProjecting && (
-        //         <div
-        //             className={
-        //                 'centered down-triang h-[25rem] w-[15rem] animate-pulse bg-cyan-400 bg-opacity-30'
-        //             }
-        //         ></div>
-        //     )}
-        // </>
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", updateActiveSection);
 
+    updateActiveSection();
 
-        <>
-            <div
-                className={'flex flex-col w-20 h-full fixed top-0 rounded-2xl left-0 bg-transparent justify-center gap-5 ml-2'}>
-                <button onClick={()=> scrollToAnchor('top')} className={'border-2 border-neutral-950 hover:bg-neutral-900 p-5 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300'}><FaSpaceShuttle fontSize={32} style={{rotate: `-90deg`}}/></button>
-                <button onClick={()=> scrollToAnchor('about')} className={'border-2 border-neutral-950 hover:bg-neutral-900 p-5 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300'}><SiAboutdotme fontSize={32} /></button>
-                <button onClick={()=> scrollToAnchor('projects')} className={'border-2 border-neutral-950 hover:bg-neutral-900 p-5 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300'}><LuMonitor fontSize={32} /></button>
-                <button onClick={()=> scrollToAnchor('contact')} className={'border-2 border-neutral-950 hover:bg-neutral-900 p-5 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300'}><MdAlternateEmail fontSize={32} /></button>
-            </div>
-            <div
-                ref={steeringRef}
-                className={`overflow-visible rounded-2xl  w-max fixed bottom-0 controls transition-opacity duration-500 ${showYoke || isProjecting ? '' : 'hidden'}`}
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", updateActiveSection);
+    };
+  }, []);
+
+  useEffect(() => {
+    function handleProjecting(e: any) {
+      setIsProjecting(e.detail);
+      console.log("test");
+    }
+
+    document.addEventListener("projecting-test", handleProjecting);
+    return () => {
+      document.removeEventListener("projecting-test", handleProjecting);
+    };
+  }, []);
+
+  function scrollToAnchor(anchorId: string) {
+    if (anchorId == "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      const element = document.getElementById(anchorId);
+
+      element?.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+
+  return (
+    <>
+      <nav
+        className={
+          "flex flex-col w-full h-16 fixed top-0 rounded-2xl left-0 bg-transparent justify-start items-start gap-2 ml-2"
+        }
+      >
+        <button
+          onClick={handleOpen}
+          className={`mt-2 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
+        >
+          MENU
+        </button>
+        {open && (
+          <>
+            <button
+              onClick={() => scrollToAnchor("top")}
+              className={`${
+                currentSection == "top" && "current-nav"
+              } mt-2 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
             >
-                <div
-                    className={`nav-perspective bg-grid-white border-2 bg-[length:300px_300px] rounded bg-center p-4`}
-                >
-                    <img
-                        alt=''
-                        className={` ${
-                            showYoke && !isProjecting
-                                ? 'animate-rotate-360-alt'
-                                : isProjecting
-                                    ? 'animate-inf-spin'
-                                    : 'hidden'
-                        } `}
-                        src={showYoke ? yoke : lens}
-                        style={{
-                            height: `${showYoke ? '35px': '50px'}`,
-                            width: '50px',
-                            transform: `rotate(${
-                                showYoke ? Math.min(Math.max(rotationDegs, -75), 75) : '0'
-                            }deg)`,
-                        }}
-                    />
-                </div>
-            </div>
-            {!showYoke && isProjecting && (
-                        <div
-                            className={
-                                'centered down-triang h-[25rem] w-[15rem] animate-pulse bg-cyan-400 bg-opacity-30'
-                            }
-                        ></div>
-                    )}
-        </>
-    );
+              <p className={"text-clamp"}>FLIGHT DECK</p>
+            </button>
+            <button
+              onClick={() => scrollToAnchor("about")}
+              className={`${
+                currentSection == "about" && "current-nav"
+              } mt-2 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
+            >
+              <p className={"text-clamp"}>ABOUT</p>
+            </button>
+            <button
+              onClick={() => scrollToAnchor("projects")}
+              className={`${
+                currentSection == "projects" && "current-nav"
+              } mt-2 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
+            >
+              <p className={"text-clamp"}>PROJECTS</p>
+            </button>
+            <button
+              onClick={() => scrollToAnchor("contact")}
+              className={`${
+                currentSection == "contact" && "current-nav"
+              } mt-2 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
+            >
+              <p className={"text-clamp"}>CONTACT</p>
+            </button>
+          </>
+        )}
+      </nav>
+      <div
+        ref={steeringRef}
+        className={`overflow-visible rounded-2xl  w-max fixed bottom-0 controls transition-opacity duration-500 ${
+          showYoke || isProjecting ? "" : "hidden"
+        }`}
+      >
+        <div
+          className={`perspective bg-grid-white border-2 bg-[length:300px_300px] rounded bg-center p-4`}
+        >
+          <img
+            alt=""
+            className={` ${
+              showYoke && !isProjecting
+                ? "animate-rotate-360-alt"
+                : isProjecting
+                ? "animate-inf-spin"
+                : "hidden"
+            } `}
+            src={showYoke ? yoke : lens}
+            style={{
+              height: `${showYoke ? "35px" : "50px"}`,
+              width: "50px",
+              transform: `rotate(${
+                showYoke ? Math.min(Math.max(rotationDegs, -75), 75) : "0"
+              }deg)`,
+            }}
+          />
+        </div>
+      </div>
+      {!showYoke && isProjecting && (
+        <div
+          className={
+            "centered down-triang h-[25rem] w-[15rem] animate-pulse bg-cyan-400 bg-opacity-30"
+          }
+        ></div>
+      )}
+    </>
+  );
 };

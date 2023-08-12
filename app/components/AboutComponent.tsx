@@ -1,5 +1,7 @@
 import { ExpertiseList } from '@/app/components/ExpertiseList';
-import {inter, orbitron} from "@/app/utils/fonts";
+import { orbitron} from "@/app/utils/fonts";
+import {AiOutlineQuestionCircle} from "react-icons/ai";
+import {Tooltip} from "flowbite-react";
 
 
 export const AboutComponent = () => {

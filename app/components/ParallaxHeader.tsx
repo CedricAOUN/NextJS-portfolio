@@ -1,6 +1,8 @@
 'use client';
 import {useEffect, useState} from 'react';
 import {orbitron} from '../utils/fonts'
+import {Tooltip} from "flowbite-react";
+import {AiOutlineQuestionCircle} from "react-icons/ai";
 
 export const ParallaxHeader = () => {
     const [state, setState] = useState({
@@ -9,14 +11,10 @@ export const ParallaxHeader = () => {
         rotationDegs: 0,
         scrollY: 0,
         windowDimensions: {width: 0, height: 0},
+        mobile: false,
     });
 
 
-    // function is_touch_enabled() {
-    //
-    //     return ('ontouchstart' in window) ||
-    //         (navigator.maxTouchPoints > 0)
-    // }
 
     useEffect(() => {
         const handleScroll = () => {
@@ -74,7 +72,9 @@ export const ParallaxHeader = () => {
                     width: window.innerWidth / 2,
                     height: window.innerHeight / 2,
                 },
+                mobile: (('ontouchstart' in window) || (navigator.maxTouchPoints > 0))
             }));
+
         }
     }, []);
 
@@ -89,8 +89,7 @@ export const ParallaxHeader = () => {
     const layer4pos = calculateLayerPos(0.05);
 
     return (
-        <div
-            id={'top'}
+        <section
             className={`layer1-bg h-screen w-screen bg-cover bg-center fixed top-0 z-[-1] ${!state.scrollY && 'cursor-none'}`}
             style={{backgroundPosition: layer1pos}}
         >
@@ -126,9 +125,14 @@ export const ParallaxHeader = () => {
                 } layer4-bg absolute bottom-0 right-0 h-1/2 w-full bg-[length:100px] md:bg-[length:200px] xl:bg-[length:300px]`}
                 style={{backgroundPosition: layer4pos}}
             ></div>
-            {/*<div*/}
-            {/*    className={`cockpit-bg absolute bottom-0 w-full h-full bg-cover bg-center hidden lg:block`}*/}
-            {/*></div>*/}
-        </div>
+            <div className={`absolute right-0 p-5 transition-opacity duration-300 ${state.mobile && !state.scrollY ? 'opacity-100' : 'opacity-0' }`}>
+                    <Tooltip content={'Tap on the background to navigate space.'} placement={'right'}
+                             className={'z-50 text-xs'}>
+                        <div className={''}>
+                            <AiOutlineQuestionCircle color={'white'} fontSize={32}></AiOutlineQuestionCircle>
+                        </div>
+                    </Tooltip>
+            </div>
+        </section>
     );
 };

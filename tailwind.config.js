@@ -47,6 +47,9 @@ module.exports = {
         orbit: ['var(--font-orbitron)'],
         inter: ['var(--font-inter)'],
       },
+      fontSize: {
+        clamp: "clamp(0.3rem, 3.5vw, 1rem)",
+      },
     },
   },
   plugins: [require('flowbite/plugin')],
