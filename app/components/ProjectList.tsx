@@ -1,5 +1,5 @@
-import { generateImage, getGithubProjects } from '@/app/utils/GithubAPI';
-import { ProjectItem } from '@/app/components/ProjectItem';
+import { generateImage, getGithubProjects } from "@/app/utils/GithubAPI";
+import { ProjectItem } from "@/app/components/ProjectItem";
 
 export const ProjectList = async () => {
   const projectData = await getGithubProjects().then((res) => res.data);
@@ -11,16 +11,16 @@ export const ProjectList = async () => {
   const displayProjects: any[] = await createProjects();
 
   async function createProjects() {
-    const exludeList: string[] = ['CedricAOUN', 'NextJS-portfolio'];
+    const exludeList: string[] = ["CedricAOUN", "NextJS-portfolio"];
 
     const sortedProjects: any[] = projectData.sort((a: any, b: any) => {
       let aValue = a.homepage;
       let bValue = b.homepage;
       if (aValue == null) {
-        aValue = '';
+        aValue = "";
       }
       if (bValue == null) {
-        bValue = '';
+        bValue = "";
       }
       return aValue < bValue ? 1 : aValue === bValue ? 0 : -1;
     });
@@ -40,7 +40,7 @@ export const ProjectList = async () => {
           <ProjectItem
             key={index}
             name={project.name}
-            imgUrl={`Projects/${project.name}.png`}
+            imgUrl={`/Projects/${project.name}.jpg`}
             description={project.description}
             homepage={project.homepage}
             repoURL={project.html_url}
@@ -54,7 +54,7 @@ export const ProjectList = async () => {
     <>
       <div
         className={
-          'mx-auto grid w-max grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3'
+          "mx-auto grid w-max grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
         }
       >
         {displayProjects.map((p) => p)}

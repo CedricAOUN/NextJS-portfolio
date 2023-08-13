@@ -45,7 +45,7 @@
 }
 
 .layer1-bg {
-    background-image: url("https://www.pixelstalk.net/wp-content/uploads/images6/Space-Desktop-Backgrounds-4K.jpg");
+    background-image: url("../public/Para/main-bg.jpg");
     background-repeat: repeat-x;
 }
 
@@ -94,8 +94,8 @@
 }
 
 .current-nav {
-    background: #374151;
-    color: white;
+    background: #80ffff;
+    color: black;
     border-color: white;
 }
 
@@ -135,6 +135,14 @@
     left: 0;
     background: inherit;
     border-radius: inherit;
+}
+
+.mobile-transitions {
+    transition: background 500ms linear;
+}
+
+.mobile-rotations {
+    transition: transform 500ms linear;
 }
 
 

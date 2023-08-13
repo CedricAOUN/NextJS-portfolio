@@ -13,14 +13,10 @@ export const NavBar = () => {
   const [showYoke, setShowYoke] = useState<boolean>(true);
   const [open, setOpen] = useState<boolean>(false);
   const [currentSection, setCurrentSection] = useState<string>("top");
+  const [mobile, setMobile] = useState<boolean>(false);
 
   const yoke: string = "testing-yoke.png";
   const lens: string = "holo-lens.png";
-
-  // function is_touch_enabled() {
-  //     return ( 'ontouchstart' in window ) ||
-  //         ( navigator.maxTouchPoints > 0 )
-  // }
 
   function handleOpen() {
     setOpen(!open);
@@ -39,6 +35,9 @@ export const NavBar = () => {
         Math.atan2(e.pageX - boxCenter.x, -(e.pageY - boxCenter.y)) *
         (180 / Math.PI);
       setRotationDegs(angle);
+      if (typeof window !== "undefined") {
+        setMobile("ontouchstart" in window);
+      }
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -116,12 +115,14 @@ export const NavBar = () => {
     <>
       <nav
         className={
-          "flex flex-col w-full h-16 fixed top-0 rounded-2xl left-0 bg-transparent justify-start items-start gap-2 ml-2"
+          "flex flex-col md:flex-row w-4/6 h-16 fixed top-0 rounded-2xl left-0 bg-transparent justify-start items-start gap-2 ml-2"
         }
       >
         <button
           onClick={handleOpen}
-          className={`mt-2 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
+          className={`${
+            open && "current-nav"
+          } mt-2 mr-3 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
         >
           MENU
         </button>
@@ -131,7 +132,7 @@ export const NavBar = () => {
               onClick={() => scrollToAnchor("top")}
               className={`${
                 currentSection == "top" && "current-nav"
-              } mt-2 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
+              } w-36 mt-2 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
             >
               <p className={"text-clamp"}>FLIGHT DECK</p>
             </button>
@@ -139,7 +140,7 @@ export const NavBar = () => {
               onClick={() => scrollToAnchor("about")}
               className={`${
                 currentSection == "about" && "current-nav"
-              } mt-2 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
+              } w-36 mt-2 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
             >
               <p className={"text-clamp"}>ABOUT</p>
             </button>
@@ -147,7 +148,7 @@ export const NavBar = () => {
               onClick={() => scrollToAnchor("projects")}
               className={`${
                 currentSection == "projects" && "current-nav"
-              } mt-2 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
+              } w-36 mt-2 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
             >
               <p className={"text-clamp"}>PROJECTS</p>
             </button>
@@ -155,7 +156,7 @@ export const NavBar = () => {
               onClick={() => scrollToAnchor("contact")}
               className={`${
                 currentSection == "contact" && "current-nav"
-              } mt-2 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
+              } w-36 mt-2 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
             >
               <p className={"text-clamp"}>CONTACT</p>
             </button>
@@ -179,7 +180,7 @@ export const NavBar = () => {
                 : isProjecting
                 ? "animate-inf-spin"
                 : "hidden"
-            } `}
+            } ${mobile && "mobile-rotations"}`}
             src={showYoke ? yoke : lens}
             style={{
               height: `${showYoke ? "35px" : "50px"}`,
