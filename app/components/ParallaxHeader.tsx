@@ -101,9 +101,7 @@ export const ParallaxHeader = () => {
     <section
       className={`${
         state.mobile && "mobile-transitions"
-      } layer1-bg h-screen w-screen bg-cover bg-center fixed top-0 z-[-1] ${
-        !state.scrollY && "cursor-none"
-      }`}
+      } layer1-bg h-screen w-screen bg-cover bg-center fixed top-0 z-[-1]`}
       style={{ backgroundPosition: layer1pos }}
     >
       <div

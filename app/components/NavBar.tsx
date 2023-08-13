@@ -5,6 +5,7 @@ import { SiAboutdotme } from "react-icons/si";
 import { MdAlternateEmail } from "react-icons/md";
 import { LuMonitor } from "react-icons/lu";
 import { activeElement } from "@floating-ui/utils/react";
+import { HamburgerIcon } from "@/app/components/HamburgerIcon";
 
 export const NavBar = () => {
   const steeringRef = useRef<any>("");
@@ -57,7 +58,7 @@ export const NavBar = () => {
     };
 
     function updateActiveSection() {
-      const sections = ["about", "projects", "contact"];
+      const sections = ["about", "projects", "info", "contact"];
 
       if (window.scrollY == 0) {
         setCurrentSection("top");
@@ -92,7 +93,6 @@ export const NavBar = () => {
   useEffect(() => {
     function handleProjecting(e: any) {
       setIsProjecting(e.detail);
-      console.log("test");
     }
 
     document.addEventListener("projecting-test", handleProjecting);
@@ -122,9 +122,9 @@ export const NavBar = () => {
           onClick={handleOpen}
           className={`${
             open && "current-nav"
-          } mt-2 mr-3 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
+          } mt-2 mr-3 border-2 border-neutral-950 hover:bg-gray-600 rounded text-white bg-gray-900 transition-colors duration-300`}
         >
-          MENU
+          <HamburgerIcon />
         </button>
         {open && (
           <>
@@ -132,7 +132,7 @@ export const NavBar = () => {
               onClick={() => scrollToAnchor("top")}
               className={`${
                 currentSection == "top" && "current-nav"
-              } w-36 mt-2 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
+              } w-36 min-w-36 mt-2 border-2 border-neutral-950 hover:bg-gray-600 p-3 rounded text-white bg-gray-900 transition-colors duration-300`}
             >
               <p className={"text-clamp"}>FLIGHT DECK</p>
             </button>
@@ -140,7 +140,7 @@ export const NavBar = () => {
               onClick={() => scrollToAnchor("about")}
               className={`${
                 currentSection == "about" && "current-nav"
-              } w-36 mt-2 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
+              } w-36 mt-2 border-2 border-neutral-950 hover:bg-gray-600 p-3 rounded text-white bg-gray-900 transition-colors duration-300`}
             >
               <p className={"text-clamp"}>ABOUT</p>
             </button>
@@ -148,15 +148,23 @@ export const NavBar = () => {
               onClick={() => scrollToAnchor("projects")}
               className={`${
                 currentSection == "projects" && "current-nav"
-              } w-36 mt-2 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
+              } w-36 mt-2 border-2 border-neutral-950 hover:bg-gray-600 p-3 rounded text-white bg-gray-900 transition-colors duration-300`}
             >
               <p className={"text-clamp"}>PROJECTS</p>
+            </button>
+            <button
+              onClick={() => scrollToAnchor("info")}
+              className={`${
+                currentSection == "info" && "current-nav"
+              } w-36 mt-2 border-2 border-neutral-950 hover:bg-gray-600 p-3 rounded text-white bg-gray-900 transition-colors duration-300`}
+            >
+              <p className={"text-clamp"}>SITE INFO</p>
             </button>
             <button
               onClick={() => scrollToAnchor("contact")}
               className={`${
                 currentSection == "contact" && "current-nav"
-              } w-36 mt-2 border-2 border-neutral-950 hover:bg-neutral-900 p-3 rounded hover:text-white text-black bg-neutral-100 transition-colors duration-300`}
+              } w-36 mt-2 border-2 border-neutral-950 hover:bg-gray-600 p-3 rounded text-white bg-gray-900 transition-colors duration-300`}
             >
               <p className={"text-clamp"}>CONTACT</p>
             </button>
@@ -169,9 +177,7 @@ export const NavBar = () => {
           showYoke || isProjecting ? "" : "hidden"
         }`}
       >
-        <div
-          className={`perspective bg-grid-white border-2 bg-[length:300px_300px] rounded bg-center p-4`}
-        >
+        <div className={`perspective border-2 rounded bg-center p-4`}>
           <img
             alt=""
             className={` ${
