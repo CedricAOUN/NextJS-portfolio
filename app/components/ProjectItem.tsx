@@ -46,14 +46,14 @@ export const ProjectItem = (props: Props) => {
         >
           <div className={"group"}>
             <Image
-              className="custom-after box-border rounded-t-lg border-2 border-transparent group-hover:border-cyan-500"
+              className="custom-after box-border rounded-t-lg border-2 border-white group-hover:border-cyan-500"
               src={props.homepage ? props.imgUrl : "/no-image.png"}
               alt=""
               width={350}
               height={300}
             />
             <span
-              className={`absolute hidden text-cyan-400 group-hover:block ${orbitron.className}`}
+              className={`block ml-2 text-white group-hover:text-cyan-400 ${orbitron.className}`}
             >
               Hologram
             </span>
