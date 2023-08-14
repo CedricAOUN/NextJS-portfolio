@@ -66,7 +66,7 @@ export const ProjectItem = (props: Props) => {
           alt=""
         />
       )}
-      <div className="p-5">
+      <div className="p-5 text-center ">
         <h5
           className={`mb-2 text-2xl font-bold tracking-tight dark:text-white ${orbitron.className}`}
         >
@@ -75,25 +75,14 @@ export const ProjectItem = (props: Props) => {
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
           {props.description}
         </p>
-        <div className={"block"}>
-          {/*{props.homepage ? (*/}
-          {/*  <Link*/}
-          {/*    href={props.homepage ? props.homepage : ''}*/}
-          {/*    target={'_blank'}*/}
-          {/*    className={`*/}
-          {/*    mx-2 inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800*/}
-          {/*  `}*/}
-          {/*  >*/}
-          {/*    Visit*/}
-          {/*  </Link>*/}
-          {/*) : null}*/}
+        <div className={"block text-center py-2"}>
           {!props.homepage && (
             <Link
               href={props.repoURL}
               target={"_blank"}
-              className="mx-2 inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className="mx-auto hover:bg-neutral-900 focus:ring-primary-300 dark:bg-white dark:hover:bg-neutral-900 dark:focus:ring-primary-800 rounded bg-blue-700 px-5 py-3 text-center text-sm font-medium text-black hover:text-white focus:outline-none focus:ring-4 sm:w-fit transition-colors duration-300"
             >
-              Repo
+              View Code
             </Link>
           )}
         </div>

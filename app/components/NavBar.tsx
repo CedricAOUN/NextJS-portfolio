@@ -58,7 +58,7 @@ export const NavBar = () => {
     };
 
     function updateActiveSection() {
-      const sections = ["about", "projects", "info", "contact"];
+      const sections = ["about", "work", "projects", "info", "contact"];
 
       if (window.scrollY == 0) {
         setCurrentSection("top");
@@ -143,6 +143,14 @@ export const NavBar = () => {
               } w-36 mt-2 border-2 border-neutral-950 hover:bg-gray-600 p-3 rounded text-white bg-gray-900 transition-colors duration-300`}
             >
               <p className={"text-clamp"}>ABOUT</p>
+            </button>
+            <button
+              onClick={() => scrollToAnchor("work")}
+              className={`${
+                currentSection == "work" && "current-nav"
+              } w-36 mt-2 border-2 border-neutral-950 hover:bg-gray-600 p-3 rounded text-white bg-gray-900 transition-colors duration-300`}
+            >
+              <p className={"text-clamp"}>EXPERIENCE</p>
             </button>
             <button
               onClick={() => scrollToAnchor("projects")}
