@@ -1,5 +1,4 @@
 let axios = require("axios");
-// let puppet = require('puppeteer');
 let fs = require("fs");
 let path = require("path");
 

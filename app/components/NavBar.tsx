@@ -110,7 +110,7 @@ export const NavBar = () => {
     <>
       <nav
         className={
-          "flex flex-col md:flex-row w-4/6 h-16 fixed top-0 rounded-2xl left-0 bg-transparent justify-start items-start gap-2 ml-2"
+          "flex flex-col xl:flex-row w-4/6 h-16 fixed top-0 rounded-2xl left-0 bg-transparent justify-start items-start gap-2 ml-2"
         }
       >
         <button

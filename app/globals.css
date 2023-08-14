@@ -94,7 +94,7 @@
 }
 
 .current-nav {
-    background: #00218f;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(67, 18, 120, 1) 100%);
     border-color: white;
 }
 
@@ -109,7 +109,7 @@
 
 .modal-bg:before {
     content: "";
-    z-index: 100;
+    z-index: -1;
     pointer-events: none;
     position: absolute;
     top: 0;

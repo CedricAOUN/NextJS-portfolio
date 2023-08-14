@@ -59,10 +59,12 @@ export default function HoloModal(props: Props) {
             className={`flex w-full flex-col items-center justify-center rounded-2xl p-4`}
           >
             <div className={"flex w-[100%] h-12 justify-center py-2"}>
-              <h2 className={`text-center text-2xl ${orbitron.className}`}>
+              <h2
+                className={`text-center text-2xl mx-auto ${orbitron.className}`}
+              >
                 {props.title}
               </h2>
-              <span className={"ml-auto"}>
+              <span>
                 <AiOutlineClose
                   color="white"
                   fontSize="1.5rem"
@@ -83,10 +85,22 @@ export default function HoloModal(props: Props) {
               }
             >
               <a href={props.repoURL} target={"_blank"}>
-                <Button>Review Repository</Button>
+                <button
+                  className={
+                    "bg-cyan-600 hover:bg-cyan-900 transition-colors rounded shadow-md shadow-cyan-400 p-3"
+                  }
+                >
+                  View Code
+                </button>
               </a>
               <a href={props.src} target={"_blank"}>
-                <Button>Visit Website</Button>
+                <button
+                  className={
+                    "bg-cyan-600 hover:bg-cyan-900 transition-colors rounded shadow-md shadow-cyan-400 p-3"
+                  }
+                >
+                  Visit Website
+                </button>
               </a>
             </div>
           </div>

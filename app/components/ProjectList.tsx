@@ -13,21 +13,24 @@ export const ProjectList = async () => {
   async function createProjects() {
     const exludeList: string[] = ["CedricAOUN", "NextJS-portfolio"];
 
-    const sortedProjects: any[] = projectData.sort((a: any, b: any) => {
-      let aValue = a.homepage;
-      let bValue = b.homepage;
-      if (aValue == null) {
-        aValue = "";
+    const dateSortedProjects: any[] = projectData.sort((a: any, b: any) => {
+      const aDate: Date = new Date(a.created_at);
+      const bDate: Date = new Date(b.created_at);
+      const aURL: string = a.homepage;
+      const bURL: string = b.homepage;
+
+      if (!aURL && bURL) {
+        return 1;
+      } else if (aURL && !bURL) {
+        return -1;
+      } else {
+        return bDate.getTime() - aDate.getTime();
       }
-      if (bValue == null) {
-        bValue = "";
-      }
-      return aValue < bValue ? 1 : aValue === bValue ? 0 : -1;
     });
 
     let orderedProjects: any[] = [];
 
-    sortedProjects.map((project: any, index: number) => {
+    dateSortedProjects.map((project: any, index: number) => {
       let exclude = false;
       exludeList.find((itemName) => {
         if (itemName == project.name) {
