@@ -10,6 +10,7 @@ export const ExpertiseList = () => {
     "NodeJS",
     "express",
     "React",
+    "NextJS",
     "AngularJS",
     "Flutter",
     "SocketIO",
