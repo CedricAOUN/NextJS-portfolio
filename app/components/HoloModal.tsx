@@ -66,8 +66,11 @@ export default function HoloModal(props: Props) {
               </h2>
               <span>
                 <AiOutlineClose
+                  className={
+                    "bg-transparent hover:bg-cyan-900 shadow-md shadow-cyan-400 rounded p-2"
+                  }
                   color="white"
-                  fontSize="1.5rem"
+                  fontSize="2rem"
                   onClick={() => controls.setOpenModal(undefined)}
                 />
               </span>
