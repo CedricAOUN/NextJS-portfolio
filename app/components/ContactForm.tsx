@@ -148,7 +148,7 @@ export const ContactForm = () => {
             </div>
           </form>
         </div>
-        <p className={` text-center text-white bg-gray-900`}>
+        <p className={`mt-5 text-center text-white bg-gray-900`}>
           Copyright © 2023 Cedric Aoun, All Rights Reserved
         </p>
       </section>

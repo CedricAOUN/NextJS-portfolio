@@ -80,22 +80,22 @@ export const ParallaxHeader = () => {
       50 - (state.mousePos.mouseY - state.windowDimensions.height) * speed
     }%`;
 
-  const calculateDistance = (initialSizePercent: number) => {
+  const calculateDistance = (initialSizePercent: number, speed: number) => {
     const responsiveSize =
       (state.windowDimensions.width * initialSizePercent) / 100;
     return (
       responsiveSize -
-      (state.mousePos.mouseY - state.windowDimensions.height) * 0.1
+      (state.mousePos.mouseY - state.windowDimensions.height) * speed
     );
   };
 
   const layer1pos = calculateLayerPos(0.01);
   const layer2pos = calculateLayerPos(0.02);
-  const layer2dist = calculateDistance(50);
+  const layer2dist = calculateDistance(50, 0.1);
   const layer3pos = calculateLayerPos(0.03);
-  const layer3dist = calculateDistance(40);
+  const layer3dist = calculateDistance(40, 0.08);
   const layer4pos = calculateLayerPos(0.05);
-  const layer4dist = calculateDistance(20);
+  const layer4dist = calculateDistance(20, 0.06);
 
   return (
     <section

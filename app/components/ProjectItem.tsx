@@ -22,20 +22,6 @@ export const ProjectItem = (props: Props) => {
 
   const [openModal, setOpenModal] = useState<boolean>(false);
 
-  function handleOpen() {
-    if (!openModal) {
-      setOpenModal(true);
-    }
-  }
-
-  function handleClose() {
-    if (openModal) {
-      setOpenModal(false);
-      const event = new CustomEvent("projecting-test", { detail: false });
-      document.dispatchEvent(event);
-    }
-  }
-
   return (
     <div className="max-w-[20rem] rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800 ">
       {(props.homepage && (

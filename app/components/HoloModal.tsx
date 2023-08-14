@@ -31,30 +31,13 @@ export default function HoloModal(props: Props) {
   useEffect(() => {
     if (openModal == undefined) {
       const event = new CustomEvent("projecting-test", { detail: false });
+      document.documentElement.style.overflow = "auto";
       document.dispatchEvent(event);
     } else {
       const event = new CustomEvent("projecting-test", { detail: true });
+      document.documentElement.style.overflow = "hidden";
       document.dispatchEvent(event);
     }
-  }, [openModal]);
-
-  useEffect(() => {
-    const preventScroll = (event: WheelEvent) => {
-      event.preventDefault();
-    };
-
-    if (openModal) {
-      document.body.style.overflow = "hidden";
-      window.addEventListener("wheel", preventScroll, { passive: false });
-    } else {
-      document.body.style.overflow = "auto";
-      window.removeEventListener("wheel", preventScroll);
-    }
-
-    // Clean up the event listener when component unmounts or modal is closed
-    return () => {
-      window.removeEventListener("wheel", preventScroll);
-    };
   }, [openModal]);
 
   return (

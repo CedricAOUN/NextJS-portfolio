@@ -1,10 +1,5 @@
 "use client";
-import { Fragment, useEffect, useRef, useState } from "react";
-import { FaSpaceShuttle } from "react-icons/fa";
-import { SiAboutdotme } from "react-icons/si";
-import { MdAlternateEmail } from "react-icons/md";
-import { LuMonitor } from "react-icons/lu";
-import { activeElement } from "@floating-ui/utils/react";
+import { useEffect, useRef, useState } from "react";
 import { HamburgerIcon } from "@/app/components/HamburgerIcon";
 
 export const NavBar = () => {
