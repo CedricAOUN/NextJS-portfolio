@@ -87,7 +87,7 @@ export default function HoloModal(props: Props) {
                 "flex flex-col items-center justify-center gap-2 p-2 text-center md:flex-row"
               }
             >
-              <a href={props.repoURL}>
+              <a href={props.repoURL} target={"_blank"}>
                 <div className="btn-1">View Code</div>
               </a>
               <a href={props.src} target={"_blank"}>
