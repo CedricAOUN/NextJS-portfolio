@@ -67,9 +67,9 @@ export default function HoloModal(props: Props) {
               <span>
                 <AiOutlineClose
                   className={
-                    "bg-transparent hover:bg-cyan-900 shadow-md shadow-cyan-400 rounded p-2"
+                    "hover:text-cyan-400 transition-colors duration-300"
                   }
-                  color="white"
+                  color=""
                   fontSize="2rem"
                   onClick={() => controls.setOpenModal(undefined)}
                 />
@@ -87,23 +87,11 @@ export default function HoloModal(props: Props) {
                 "flex flex-col items-center justify-center gap-2 p-2 text-center md:flex-row"
               }
             >
-              <a href={props.repoURL} target={"_blank"}>
-                <button
-                  className={
-                    "bg-cyan-600 hover:bg-cyan-900 transition-colors rounded shadow-md shadow-cyan-400 p-3"
-                  }
-                >
-                  View Code
-                </button>
+              <a href={props.repoURL}>
+                <div className="btn-1">View Code</div>
               </a>
               <a href={props.src} target={"_blank"}>
-                <button
-                  className={
-                    "bg-cyan-600 hover:bg-cyan-900 transition-colors rounded shadow-md shadow-cyan-400 p-3"
-                  }
-                >
-                  Visit Website
-                </button>
+                <div className={"btn-1"}>Visit Website</div>
               </a>
             </div>
           </div>
